@@ -25,7 +25,6 @@ public class MenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("--> " + GameManager.Instance.PlayerName);
             GameManager.Instance.QuitGame();
         }
 
@@ -35,12 +34,19 @@ public class MenuManager : MonoBehaviour
 
     public void DisplayOrHideBestScore()
     {
-        bestScore.gameObject.SetActive(false);
+        if (GameManager.Instance.BestScore > 0)
+        {
+            bestScore.gameObject.SetActive(true);
+            bestScore.text = "Best Score\n" + GameManager.Instance.BestPlayer + ": " + GameManager.Instance.BestScore;
+        }
+        else
+        {
+            bestScore.gameObject.SetActive(false);
+        }
     }
 
     public void PrefilPresistentName()
     {
-        Debug.Log("--> " + GameManager.Instance.PlayerName);
         inputField.text = GameManager.Instance.PlayerName;
     }
     

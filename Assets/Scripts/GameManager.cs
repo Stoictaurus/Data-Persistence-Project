@@ -33,6 +33,15 @@ public class GameManager : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    public void ReportScore(int score)
+    {
+        if (score > BestScore)
+        {
+            BestScore = score;
+            BestPlayer = PlayerName;
+        }
+    }
     
     private void RestorePersistentData()
     {
